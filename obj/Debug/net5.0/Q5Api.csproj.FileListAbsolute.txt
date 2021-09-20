@@ -1,7 +1,0 @@
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.csproj.AssemblyReference.cache
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.GeneratedMSBuildEditorConfig.editorconfig
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.AssemblyInfoInputs.cache
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.AssemblyInfo.cs
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.csproj.CoreCompileInputs.cache
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.MvcApplicationPartsAssemblyInfo.cs
-/Users/ben/Offline/Projects/Q5/Q5Api/obj/Debug/net5.0/Q5Api.MvcApplicationPartsAssemblyInfo.cache
