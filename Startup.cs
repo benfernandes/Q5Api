@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Q5Api.Repositories;
 
 namespace Q5Api
 {
@@ -32,6 +33,7 @@ namespace Q5Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Q5Api", Version = "v1" });
             });
+            services.AddScoped<IQ5ApiRepo, MockQ5ApiRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

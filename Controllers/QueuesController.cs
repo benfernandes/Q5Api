@@ -9,7 +9,13 @@ namespace Q5Api.Controllers
     [ApiController]
     public class QueuesController : ControllerBase
     {
-        private readonly MockQ5ApiRepo _repository = new MockQ5ApiRepo();
+        private readonly IQ5ApiRepo _repository;
+
+        public QueuesController(IQ5ApiRepo repository)
+        {
+            _repository = repository;
+        }
+
         // GET api/queues
         [HttpGet]
         public ActionResult<IEnumerable<Queue>> GetAllQueues()
