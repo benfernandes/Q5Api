@@ -9,9 +9,9 @@ namespace Q5Api.Repositories
         {
             var queues = new List<Queue>
             {
-                new Queue{Id = 0, Name = "Test queue 1"},
-                new Queue{Id = 1, Name = "Test queue 2"},
-                new Queue{Id = 2, Name = "Test queue 3"}
+                new Queue{Id = 0, Name = "Mock test queue 1"},
+                new Queue{Id = 1, Name = "Mock test queue 2"},
+                new Queue{Id = 2, Name = "Mock test queue 3"}
             };
 
             return queues;
@@ -19,7 +19,7 @@ namespace Q5Api.Repositories
 
         public Queue GetQueueById(int id)
         {
-            return new Queue { Id = 0, Name = "Test queue" };
+            return new Queue { Id = 0, Name = "Mock test queue" };
         }
     }
 }
