@@ -82,5 +82,21 @@ namespace Q5Api.Controllers
 
             return NoContent();
         }
+
+        // DELETE api/queues/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteQueue(int id)
+        {
+            var queueModelFromRepo = _repository.GetQueueById(id);
+            if (queueModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteQueue(queueModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

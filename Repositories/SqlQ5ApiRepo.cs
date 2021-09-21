@@ -25,6 +25,16 @@ namespace Q5Api.Repositories
             _context.Queues.Add(queue);
         }
 
+        public void DeleteQueue(Queue queue)
+        {
+            if (queue == null)
+            {
+                throw new ArgumentNullException(nameof(queue));
+            }
+
+            _context.Queues.Remove(queue);
+        }
+
         public IEnumerable<Queue> GetAllQueues()
         {
             return _context.Queues.ToList();

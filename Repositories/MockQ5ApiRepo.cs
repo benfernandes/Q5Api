@@ -10,6 +10,11 @@ namespace Q5Api.Repositories
             throw new System.NotImplementedException();
         }
 
+        public void DeleteQueue(Queue queue)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Queue> GetAllQueues()
         {
             var queues = new List<Queue>
