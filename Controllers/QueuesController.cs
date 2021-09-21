@@ -43,5 +43,17 @@ namespace Q5Api.Controllers
                 return NotFound();
             }
         }
+
+        // POST api/queues
+        [HttpPost]
+        public ActionResult<QueueReadDto> CreateQueue(QueueCreateDto queueCreateDto)
+        {
+            var queueModel = _mapper.Map<Queue>(queueCreateDto);
+            // TODO - Add validation checks
+            _repository.CreateQueue(queueModel);
+            _repository.SaveChanges();
+
+            return Ok(queueModel);
+        }
     }
 }

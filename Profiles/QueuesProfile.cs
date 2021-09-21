@@ -9,6 +9,7 @@ namespace Q5Api.Profiles
         public QueuesProfile()
         {
             CreateMap<Queue, QueueReadDto>();
+            CreateMap<QueueCreateDto, Queue>();
         }
     }
 }
