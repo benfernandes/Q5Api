@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Q5Api.Contexts;
@@ -14,6 +15,16 @@ namespace Q5Api.Repositories
             _context = context;
         }
 
+        public void CreateQueue(Queue queue)
+        {
+            if (queue == null)
+            {
+                throw new ArgumentNullException(nameof(queue));
+            }
+
+            _context.Queues.Add(queue);
+        }
+
         public IEnumerable<Queue> GetAllQueues()
         {
             return _context.Queues.ToList();
@@ -22,6 +33,11 @@ namespace Q5Api.Repositories
         public Queue GetQueueById(int id)
         {
             return _context.Queues.FirstOrDefault(p => p.Id == id);
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

@@ -5,7 +5,10 @@ namespace Q5Api.Repositories
 {
     public interface IQ5ApiRepo
     {
+        bool SaveChanges();
+        
         IEnumerable<Queue> GetAllQueues();
         Queue GetQueueById(int id);
+        void CreateQueue(Queue queue);
     }
 }

@@ -5,6 +5,11 @@ namespace Q5Api.Repositories
 {
     public class MockQ5ApiRepo : IQ5ApiRepo
     {
+        public void CreateQueue(Queue queue)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Queue> GetAllQueues()
         {
             var queues = new List<Queue>
@@ -20,6 +25,11 @@ namespace Q5Api.Repositories
         public Queue GetQueueById(int id)
         {
             return new Queue { Id = 0, Name = "Mock test queue" };
+        }
+
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
