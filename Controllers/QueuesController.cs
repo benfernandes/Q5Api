@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Q5Api.Dtos;
 using Q5Api.Models;
@@ -56,6 +57,30 @@ namespace Q5Api.Controllers
             var queueReadDto = _mapper.Map<QueueReadDto>(queueModel);
 
             return CreatedAtRoute(nameof(GetQueueById), new { Id = queueReadDto.Id }, queueReadDto);
+        }
+
+        // PATCH api/queues/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialUpdateQueue(int id, JsonPatchDocument<QueueUpdateDto> patchDocument)
+        {
+            var queueModelFromRepo = _repository.GetQueueById(id);
+            if (queueModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var queueToPatch = _mapper.Map<QueueUpdateDto>(queueModelFromRepo);
+            patchDocument.ApplyTo(queueToPatch, ModelState);
+            if (!TryValidateModel(queueToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(queueToPatch, queueModelFromRepo);
+            _repository.UpdateQueue(queueModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
         }
     }
 }

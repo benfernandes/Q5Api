@@ -10,6 +10,8 @@ namespace Q5Api.Profiles
         {
             CreateMap<Queue, QueueReadDto>();
             CreateMap<QueueCreateDto, Queue>();
+            CreateMap<QueueUpdateDto, Queue>();
+            CreateMap<Queue, QueueUpdateDto>();
         }
     }
 }

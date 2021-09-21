@@ -31,5 +31,10 @@ namespace Q5Api.Repositories
         {
             throw new System.NotImplementedException();
         }
+
+        public void UpdateQueue(Queue queue)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -39,5 +39,10 @@ namespace Q5Api.Repositories
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void UpdateQueue(Queue queue)
+        {
+            // No implementation required
+        }
     }
 }

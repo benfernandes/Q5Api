@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Q5Api.Contexts;
 using Q5Api.Repositories;
+using Newtonsoft.Json.Serialization;
 
 namespace Q5Api
 {
@@ -30,7 +31,10 @@ namespace Q5Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Q5ApiContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Q5Connection")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {

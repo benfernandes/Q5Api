@@ -10,5 +10,6 @@ namespace Q5Api.Repositories
         IEnumerable<Queue> GetAllQueues();
         Queue GetQueueById(int id);
         void CreateQueue(Queue queue);
+        void UpdateQueue(Queue queue);
     }
 }
