@@ -31,6 +31,7 @@ namespace Q5Api
         {
             services.AddDbContext<Q5ApiContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Q5Connection")));
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Q5Api", Version = "v1" });
