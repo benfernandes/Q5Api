@@ -29,7 +29,15 @@ namespace Q5Api.Controllers
         public ActionResult<Queue> GetQueueById(int id)
         {
             var queueItem = _repository.GetQueueById(id);
-            return Ok(queueItem);
+
+            if (queueItem != null)
+            {
+                return Ok(queueItem);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
