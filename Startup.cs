@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Q5Api.Contexts;
 using Q5Api.Repositories;
 
 namespace Q5Api
@@ -27,7 +29,7 @@ namespace Q5Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<Q5ApiContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Q5Connection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
