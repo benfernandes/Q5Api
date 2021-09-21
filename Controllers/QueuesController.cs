@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Q5Api.Dtos;
 using Q5Api.Models;
 using Q5Api.Repositories;
 
@@ -10,29 +12,31 @@ namespace Q5Api.Controllers
     public class QueuesController : ControllerBase
     {
         private readonly IQ5ApiRepo _repository;
+        private readonly IMapper _mapper;
 
-        public QueuesController(IQ5ApiRepo repository)
+        public QueuesController(IQ5ApiRepo repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         // GET api/queues
         [HttpGet]
-        public ActionResult<IEnumerable<Queue>> GetAllQueues()
+        public ActionResult<IEnumerable<QueueReadDto>> GetAllQueues()
         {
             var queueItems = _repository.GetAllQueues();
-            return Ok(queueItems);
+            return Ok(_mapper.Map<IEnumerable<QueueReadDto>>(queueItems));
         }
 
         // GET api/queues/{id}
         [HttpGet("{id}")]
-        public ActionResult<Queue> GetQueueById(int id)
+        public ActionResult<QueueReadDto> GetQueueById(int id)
         {
             var queueItem = _repository.GetQueueById(id);
 
             if (queueItem != null)
             {
-                return Ok(queueItem);
+                return Ok(_mapper.Map<QueueReadDto>(queueItem));
             }
             else
             {
