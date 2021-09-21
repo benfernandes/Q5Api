@@ -29,7 +29,7 @@ namespace Q5Api.Controllers
         }
 
         // GET api/queues/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetQueueById")]
         public ActionResult<QueueReadDto> GetQueueById(int id)
         {
             var queueItem = _repository.GetQueueById(id);
@@ -53,7 +53,9 @@ namespace Q5Api.Controllers
             _repository.CreateQueue(queueModel);
             _repository.SaveChanges();
 
-            return Ok(queueModel);
+            var queueReadDto = _mapper.Map<QueueReadDto>(queueModel);
+
+            return CreatedAtRoute(nameof(GetQueueById), new { Id = queueReadDto.Id }, queueReadDto);
         }
     }
 }
